@@ -1,10 +1,10 @@
 <?php
-include_once("Class/select.php");
+include_once("Class/Crud.php");
 include_once("layout_header.php");
 
-$select = new Select();
+$crud = new Crud();
 
-$read = $select->read();
+$read = $crud->read();
 echo "<div id='conteiner'>";
 echo "<table>";
      echo "<tr>";

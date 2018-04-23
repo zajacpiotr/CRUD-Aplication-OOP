@@ -1,10 +1,12 @@
 <?php
 include_once("Class/Crud.php");
+include_once("Class/validation.php");
 include_once("layout_header.php");
+include_once("Class/DBConfig.php");
 
 $crud = new Crud();
 
-$read = $crud->read();
+$read = $crud->readAll();
 echo "<div id='conteiner'>";
 echo "<table>";
      echo "<tr>";
@@ -26,6 +28,31 @@ foreach ($read as $key => $res) {
      echo "</div>";
 $name = $lastName = "";
 $nameErr = $lastNameErr = $error = $msg = $errorMsg = $insertMsg = "";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $validation = new Validation();
+ 
+    $name = $_POST['name'];
+    $lastName = $_POST['lastName'];
+    
+    $msg = $validation->check_empty($_POST, array('name', 'lastName'));
+    $check_name = $validation->is_valid($_POST['name']);
+    $check_lastName = $validation->is_valid($_POST['lastName']);
+    
+    if($msg != null) {
+        $errorMsg= $msg; 
+    } elseif (!$check_name) {
+        $nameErr = 'Please enter correct First Name';
+    } elseif (!$check_lastName) {
+        $lastNameErr = 'Please enter correct Last Name.';
+    } else { 
+        $query = "SELECT * FROM persons WHERE first_name = '$name' AND last_name= '$lastName'";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+       if (count($stmt)>0) {
+           $error= 'Taki sprzedawca znajduje się juz w bazie';
+       }
+    }
+}
 ?>
     <form action="index.php" method="post">
         <div class="form-group">

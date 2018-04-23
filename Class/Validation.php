@@ -1,5 +1,5 @@
 <?php
-include_once 'DbConfig.php';
+include_once ("DbConfig.php");
 
 class Validation extends DBConfig
 {
@@ -12,7 +12,7 @@ class Validation extends DBConfig
         $msg= null;
         foreach ($fields as $value) {
             if (empty($data[$value])) {
-                $msg .= "$value puste <br />";
+                $msg .= "$value empty <br />";
             }
         }
         return $msg;
@@ -26,3 +26,4 @@ class Validation extends DBConfig
         } 
         return false;
     }
+}

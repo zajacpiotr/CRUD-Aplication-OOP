@@ -1,5 +1,5 @@
 <?php
-include_once 'DBConfig.php';
+include_once ("DBConfig.php");
 
 class Crud extends DBConfig
 {
@@ -7,13 +7,21 @@ class Crud extends DBConfig
     {
         parent::__construct();
     }
-    public function read()
+    public function readAll()
     {
         $query = "SELECT * FROM persons";
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
         
         return $stmt;
+    }
+    public function read()
+    {
+        $query = "SELECT * FROM persons";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        
+        return true;
     }
     public function delete($id) 
     { 

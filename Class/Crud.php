@@ -15,14 +15,6 @@ class Crud extends DBConfig
         
         return $stmt;
     }
-    public function read()
-    {
-        $query = "SELECT * FROM persons";
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-        
-        return true;
-    }
     public function delete($id) 
     { 
         $query = "DELETE FROM persons WHERE id = $id";

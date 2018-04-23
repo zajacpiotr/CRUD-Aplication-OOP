@@ -7,7 +7,7 @@ class Validation extends DBConfig
     {
         parent::__construct();
     }
-    public function check_empty($data, $fields) 
+    public function checkEmpty($data, $fields) 
     {
         $msg= null;
         foreach ($fields as $value) {
@@ -17,7 +17,7 @@ class Validation extends DBConfig
         }
         return $msg;
     }
-    public function is_valid($field)
+    public function isValid($field)
     {
         if (preg_match("/^[a-zA-Z\s]+/", $field)) {
             if(strlen($field)>2) {
@@ -25,5 +25,19 @@ class Validation extends DBConfig
             }
         } 
         return false;
+    }
+    public function read($query)
+    {
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        foreach ($stmt as $key => $res) {
+            if (count($res)>0) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        }
+        
     }
 }

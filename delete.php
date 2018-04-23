@@ -8,6 +8,5 @@ $stmt = $crud->delete($id);
 
 if ($stmt) {
     header("Location:index.php");
-}
-    
+}   
 ?>

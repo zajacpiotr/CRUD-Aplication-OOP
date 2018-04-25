@@ -49,7 +49,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt = $validation->read($query);
         if ($stmt) {
            $error= 'Taki sprzedawca znajduje się juz w bazie';
-       }
+       } if(empty($error)) {
+            $stmt = $crud->insert($name, $lastName);
+            if($stmt){
+                $insertMsg= "Sprzedwca dodany do bazy danych";
+            }
+        }
     }
 }
 ?>

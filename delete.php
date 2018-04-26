@@ -7,6 +7,6 @@ $id= $_GET['id'];
 $stmt = $crud->delete($id);
 
 if ($stmt) {
-    header("Location:index.php");
+    header("Location:table.php");
 }   
 ?>

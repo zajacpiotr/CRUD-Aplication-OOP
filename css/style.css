@@ -11,10 +11,16 @@
     color: green;
 }
 
-table {
+#conteiner {
     width: 30%;
     margin: 40px auto;
 }
 
 tr:first-of-type {
     background-color: #CCCCCC;
+}
+
+#conteiner1 {
+    width: 30%;
+    margin: 40px auto;
+}

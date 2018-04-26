@@ -6,26 +6,6 @@ include_once("Class/DBConfig.php");
 
 $crud = new Crud();
 
-$read = $crud->readAll();
-echo "<div id='conteiner'>";
-    echo "<table>";
-         echo "<tr>";
-         echo "<td>ID</td>";
-         echo "<td>First Name</td>";
-         echo "<td>Last Name</td>";
-         echo "<td>Actions</td>";
-
-         echo "</tr>";
-
-    foreach ($read as $key => $res) { 
-         echo "<tr>";
-         echo "<td>".$res['id']."</td>";
-         echo "<td>".$res['first_name']."</td>";
-         echo "<td>".$res['last_name']."</td>"; 
-         echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>"; 
-    }
-    echo "</table>";
-echo "</div>";
 $name = $lastName = "";
 $nameErr = $lastNameErr = $error = $msg = $errorMsg = $insertMsg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -79,5 +59,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <?php echo $error;
                     echo $errorMsg?>
             </p>
+            <a href="table.php">Show database</a>
         </div>
     </form>

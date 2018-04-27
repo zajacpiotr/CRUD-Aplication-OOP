@@ -43,5 +43,19 @@ class Crud extends DBConfig
             return true;
         }
     }
+    public function select($id) 
+    { 
+        $query = "SELECT * FROM persons WHERE id = '$id'";
+        
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+    
+        if ($stmt == false) {
+            echo 'Error: cannot select id ' . $id . ' from table persons ';
+            return false;
+        } else {
+            return $stmt;
+        }
+    }
 }
 ?>

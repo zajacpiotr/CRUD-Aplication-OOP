@@ -1,5 +1,5 @@
 .form-group {
-    width: 400px;
+    width: 30%;
     margin: 40px auto;
 }
 
@@ -16,11 +16,10 @@
     margin: 40px auto;
 }
 
-tr:first-of-type {
-    background-color: #CCCCCC;
+table {
+    width: 100%;
 }
 
-#conteiner1 {
-    width: 30%;
-    margin: 40px auto;
+tr:first-of-type {
+    background-color: #CCCCCC;
 }

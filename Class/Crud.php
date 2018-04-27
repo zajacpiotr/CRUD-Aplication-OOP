@@ -57,5 +57,19 @@ class Crud extends DBConfig
             return $stmt;
         }
     }
+    public function update($name, $lastName, $id) 
+    { 
+        $query = "UPDATE persons SET first_name='$name',last_name='$lastName' WHERE id='$id'";
+        
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+    
+        if ($stmt == false) {
+            echo 'Error: cannot insert';
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 ?>

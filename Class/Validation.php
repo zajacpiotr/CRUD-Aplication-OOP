@@ -19,7 +19,7 @@ class Validation extends DBConfig
     }
     public function isValid($field)
     {
-        if (preg_match("/^[a-zA-Z\s]+/", $field)) {
+        if (preg_match("/^[a-zA-ZąęćżźńłóśĄĆĘŁŃÓŚŹŻ\s]+$/", $field)) {
             if(strlen($field)>2) {
             return true;
             }

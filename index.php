@@ -5,7 +5,10 @@ include_once("layout_header.php");
 include_once("Class/DBConfig.php");
 
 $crud = new Crud();
-
+session_start();
+if(isset($_SESSION["sessionVar"])){
+session_destroy();
+}
 $name = $lastName = "";
 $nameErr = $lastNameErr = $error = $msg = $errorMsg = $insertMsg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){

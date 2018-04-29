@@ -6,6 +6,7 @@ $crud = new Crud();
 $read = $crud->readAll();
 
 echo "<div id='conteiner'>";
+    echo "Database records";
     echo "<table>";
          echo "<tr>";
          echo "<td>ID</td>";
@@ -24,5 +25,6 @@ echo "<div id='conteiner'>";
     echo "</table>";
 echo "<a href='index.php'>Go back</a>";
 echo "</div>";
-
+session_start();
+$_SESSION["sessionVar"] = true;
 ?>

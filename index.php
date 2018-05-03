@@ -31,11 +31,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $query = "SELECT * FROM persons WHERE first_name = '$name' AND last_name= '$lastName'";
         $stmt = $validation->read($query);
         if ($stmt) {
-           $error= 'Taki sprzedawca znajduje się juz w bazie';
+           $error= 'This person is actually in database';
        } if(empty($error)) {
             $stmt = $crud->insert($name, $lastName);
             if($stmt){
-                $insertMsg= "Sprzedwca dodany do bazy danych";
+                $insertMsg= "This person added to database";
             }
         }
     }
